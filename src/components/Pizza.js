@@ -1,14 +1,23 @@
 import React, { useState } from "react";
+import { Modal } from 'react-bootstrap'
 
 export default function Pizza({ pizzaSelected }) {
 
     const [quantity, setQuantity] = useState(1)
     const [varient, setVarient] = useState('small')
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
-        <div style={{margin: '40px'}} className="shadow-lg p-3 mb-5 bg-white rounded">
-            <h1>{pizzaSelected.name}</h1>
-            <img src={pizzaSelected.image} className="img-fluid" style={{ height: '200px', width: "200px" }} />
+        <div style={{ margin: '40px' }} className="shadow-lg p-3 mb-5 bg-white rounded">
+
+            <div onClick={handleShow}>
+                <h1>{pizzaSelected.name}</h1>
+                <img src={pizzaSelected.image} className="img-fluid" style={{ height: '200px', width: "200px" }} />
+            </div>
 
             <div className="flex-container">
 
@@ -41,6 +50,23 @@ export default function Pizza({ pizzaSelected }) {
                 </div>
 
             </div>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{pizzaSelected.name}</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <img src={pizzaSelected.image} className="img-fluid" style={{ height: '300px', width: "300px" }}/>
+                    <p>{pizzaSelected.description}</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <button className="btn" onClick={handleClose}>
+                        Close
+                    </button>
+                </Modal.Footer>
+            </Modal>
 
         </div>
     )
