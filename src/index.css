@@ -23,3 +23,23 @@ code {
 .navbar-brand{
   color: #000 !important;
 }
+
+h1{
+  font-size: 20px !important;
+}
+
+.flex-container{
+  display: flex !important;
+  justify-content: column !important;
+}
+
+.btn{
+  background-color: red !important;
+  color: white !important;
+}
+
+select{
+  box-shadow: none !important;
+  border-color: black !important;
+  
+}
